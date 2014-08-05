@@ -30,6 +30,12 @@ RUN apt-get update
 RUN apt-get install -y mysql-server && \
     sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/my.cnf
 
+# Init MySql
+ADD ./mysql.ddl mysql.ddl
+RUN mysqld & sleep 10 && \
+    mysql < mysql.ddl && \
+    mysqladmin shutdown
+
 ####################
 # Supervisord
 ####################
