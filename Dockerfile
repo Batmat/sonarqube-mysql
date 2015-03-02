@@ -19,9 +19,9 @@ RUN unzip sonarqube-*.zip
 RUN rm sonarqube-*.zip 
 RUN mv /sonarqube-${sonarQubeVersion} /sonarqube
 
-RUN sed -i 's/^#?sonar.jdbc.username.*$/sonar.jdbc.username=\${env:SONAR_JDBC_USERNAME}/' /sonarqube/conf/sonar.properties
-RUN sed -i 's/^#?sonar.jdbc.password.*$/sonar.jdbc.password=\${env:SONAR_JDBC_PASSWORD}/' /sonarqube/conf/sonar.properties
-RUN sed -i 's/^#?sonar.jdbc.url.*$/sonar.jdbc.url=\${env:SONAR_JDBC_URL}/'                /sonarqube/conf/sonar.properties
+RUN sed -i 's/^#\?sonar.jdbc.username.*$/sonar.jdbc.username=\${env:SONAR_JDBC_USERNAME}/' /sonarqube/conf/sonar.properties
+RUN sed -i 's/^#\?sonar.jdbc.password.*$/sonar.jdbc.password=\${env:SONAR_JDBC_PASSWORD}/' /sonarqube/conf/sonar.properties
+RUN sed -i 's/^#\?sonar.jdbc.url.*$/sonar.jdbc.url=\${env:SONAR_JDBC_URL}/'                /sonarqube/conf/sonar.properties
 
 ENV SONAR_JDBC_USERNAME sonar
 ENV SONAR_JDBC_PASSWORD sonar
