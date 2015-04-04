@@ -12,7 +12,7 @@ RUN chmod +x /usr/sbin/policy-rc.d
 #######################
 RUN apt-get install -y unzip wget
 
-ENV sonarQubeVersion 5.0.1
+ENV sonarQubeVersion 5.1
 
 RUN wget http://dist.sonar.codehaus.org/sonarqube-${sonarQubeVersion}.zip 
 RUN unzip sonarqube-*.zip
