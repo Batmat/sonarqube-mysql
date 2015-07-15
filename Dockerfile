@@ -1,10 +1,10 @@
 FROM ndeloof/java
 
 RUN apt-get update
- 
+
 
 # Forbid daemon to start
-RUN echo '#!/bin/sh\nexit 101' > /usr/sbin/policy-rc.d 
+RUN echo '#!/bin/sh\nexit 101' > /usr/sbin/policy-rc.d
 RUN chmod +x /usr/sbin/policy-rc.d
 
 #######################
@@ -12,11 +12,11 @@ RUN chmod +x /usr/sbin/policy-rc.d
 #######################
 RUN apt-get install -y unzip wget
 
-ENV sonarQubeVersion 5.1
+ENV sonarQubeVersion 5.1.1
 
-RUN wget http://dist.sonar.codehaus.org/sonarqube-${sonarQubeVersion}.zip 
+RUN wget http://dist.sonar.codehaus.org/sonarqube-${sonarQubeVersion}.zip
 RUN unzip sonarqube-*.zip
-RUN rm sonarqube-*.zip 
+RUN rm sonarqube-*.zip
 RUN mv /sonarqube-${sonarQubeVersion} /sonarqube
 
 RUN sed -i 's/^#\?sonar.jdbc.username.*$/sonar.jdbc.username=\${env:SONAR_JDBC_USERNAME}/' /sonarqube/conf/sonar.properties
